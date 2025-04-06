@@ -14,7 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:5173" }));
-app.listen(8000, () => console.log("Server is running on port 8000"));
+app.listen(7000, () => console.log("Server is running on port 7000"));
 
 app.get("/", (req, res) => res.json({ data: "hello World" }));
 

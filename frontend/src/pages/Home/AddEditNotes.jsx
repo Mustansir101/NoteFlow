@@ -82,7 +82,9 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
         <label className="input-label">Content</label>
         <textarea
           type="text"
-          className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded"
+          className={`text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded overflow-hidden h-40 ${
+            type === "view" ? "resize-none text-[15px]" : null
+          }`}
           placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
           rows={10}
           value={content}
@@ -91,7 +93,7 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
         />
       </div>
 
-      <div className="mt-3">
+      <div>
         <label className="input-label">Tags</label>
         <TagInput tags={tags} setTags={setTags} isViewMode={type === "view"} />
       </div>
