@@ -13,7 +13,15 @@ mongoose.connect(process.env.MONGO_URL);
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: ["*"],
+    credentials: true,
+  })
+);
+
 app.listen(7000, () => console.log("Server is running on port 7000"));
 
 app.get("/", (req, res) => res.json({ data: "hello World" }));
