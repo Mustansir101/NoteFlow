@@ -1,7 +1,7 @@
 import React from "react";
 import { MdAdd, MdClose } from "react-icons/md";
 
-function TagInput({ tags, setTags }) {
+function TagInput({ tags, setTags, isViewMode }) {
   const [inputValue, setInputValue] = React.useState("");
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -31,31 +31,35 @@ function TagInput({ tags, setTags }) {
               className="flex items-center gap-2 text-sm text-slate-900 bg-slate-100 px-3 py-1 rounded"
             >
               #{tag}
-              <button onClick={() => handleRemoveTag(tag)}>
-                <MdClose className="cursor-pointer" />
-              </button>
+              {!isViewMode && (
+                <button onClick={() => handleRemoveTag(tag)}>
+                  <MdClose className="cursor-pointer" />
+                </button>
+              )}
             </span>
           ))}
         </div>
       )}
-      <div className="flex items-center gap-4 mt-3">
-        <input
-          type="text"
-          className="text-sm bg-transparent border outline-none px-3 py-2 rounded"
-          placeholder="Add Tags"
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-        />
-        <button
-          className="w-8 h-8 flex items-center justify-center rounded border border-blue-700 hover:bg-blue-700"
-          onClick={() => {
-            addNewTag();
-          }}
-        >
-          <MdAdd className="text-2xl text-blue-700 hover:text-white cursor-pointer" />
-        </button>
-      </div>
+      {!isViewMode && (
+        <div className="flex items-center gap-4 mt-3">
+          <input
+            type="text"
+            className="text-sm bg-transparent border outline-none px-3 py-2 rounded"
+            placeholder="Add Tags"
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+          />
+          <button
+            className="w-8 h-8 flex items-center justify-center rounded border border-blue-700 hover:bg-blue-700"
+            onClick={() => {
+              addNewTag();
+            }}
+          >
+            <MdAdd className="text-2xl text-blue-700 hover:text-white cursor-pointer" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

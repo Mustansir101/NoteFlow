@@ -143,6 +143,13 @@ function Home() {
                 onEdit={() => handleEdit(note)}
                 onDelete={() => handleDelete(note._id)}
                 onPinNote={() => handlePinNote(note)}
+                handleClick={() =>
+                  setOpenAddEditModal({
+                    isShown: true,
+                    type: "view",
+                    data: note,
+                  })
+                }
               />
             ))}
           </div>

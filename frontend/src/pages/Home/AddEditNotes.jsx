@@ -74,6 +74,7 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
           placeholder="Go to Gym at 5am"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          readOnly={type === "view"}
         />
       </div>
 
@@ -86,22 +87,25 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
           rows={10}
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          readOnly={type === "view"}
         />
       </div>
 
       <div className="mt-3">
         <label className="input-label">Tags</label>
-        <TagInput tags={tags} setTags={setTags} />
+        <TagInput tags={tags} setTags={setTags} isViewMode={type === "view"} />
       </div>
 
       {error && <p className="text-red-500 text-xs pt-4">{error}</p>}
 
-      <button
-        className="btn-primary font-medium mt-5 p-3"
-        onClick={handleAddNote}
-      >
-        {type === "edit" ? "UPDATE" : "ADD"}
-      </button>
+      {type !== "view" && (
+        <button
+          className="btn-primary font-medium mt-5 p-3"
+          onClick={handleAddNote}
+        >
+          {type === "edit" ? "UPDATE" : "ADD"}
+        </button>
+      )}
     </div>
   );
 }

@@ -11,12 +11,13 @@ function NoteCard({
   onEdit,
   onDelete,
   onPinNote,
+  handleClick,
 }) {
   return (
     <div className="border border-slate-300 rounded p-4 bg-white hover:shadow-xl transition-all ease-in-out">
       <div className="flex items-center justify-between">
-        <div>
-          <h6 className="text-sm font-medium ">{title}</h6>
+        <div onClick={handleClick} className="cursor-pointer">
+          <h6 className="text-sm font-medium hover:underline">{title}</h6>
           <span className="text-xs text-slate-500">
             {moment(date).format("Do MMMM YYYY")} {/* 4th April 2025 */}
           </span>
