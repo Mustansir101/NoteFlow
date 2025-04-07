@@ -4,7 +4,12 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import Logo from "../../assets/Logo.png";
 
-function Navbar({ userInfo, onSearch, getAllNotes, setIsSearch }) {
+function Navbar({
+  userInfo,
+  onSearch = () => {},
+  getAllNotes = () => {},
+  setIsSearch = () => {},
+}) {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const navigate = useNavigate();

@@ -13,11 +13,10 @@ mongoose.connect(process.env.MONGO_URL);
 const app = express();
 
 app.use(express.json());
-const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["*"],
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
