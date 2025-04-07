@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://note-app-gilt-eight.vercel.app/",
+    origin: "https://note-app-gilt-eight.vercel.app",
     credentials: true,
   })
 );
