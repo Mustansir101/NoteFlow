@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://note-app-gilt-eight.vercel.app",
+    origin: "https://note-app-frontend-3ato.onrender.com",
     credentials: true,
   })
 );
