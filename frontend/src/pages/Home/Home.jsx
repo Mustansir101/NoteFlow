@@ -37,9 +37,9 @@ function Home() {
       }
     } catch (error) {
       console.log(error);
+      navigate("/login");
       if (error?.response?.status === 401) {
         localStorage.removeItem("token");
-        navigate("/login");
       }
     }
   };
