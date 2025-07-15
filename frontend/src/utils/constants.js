@@ -1,2 +1,6 @@
-// export const BASE_URL = "https://note-app-backend-9ihf.onrender.com";
-export const BASE_URL = "http://localhost:7000/";
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:7000/"
+    : "https://note-app-backend-9ihf.onrender.com";
+console.log(process.env.NODE_ENV);
+export { BASE_URL };
