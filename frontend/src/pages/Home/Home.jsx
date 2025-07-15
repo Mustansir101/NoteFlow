@@ -133,7 +133,7 @@ function Home() {
       />
       {allNotes.length > 0 ? (
         <div className="w-full px-4 sm:px-6 lg:px-12 mx-auto">
-          <div className="grid grid-cols-3 gap-4 mt-8">
+          <div className="grid grid-cols-3 gap-4 mt-8 p-2">
             {allNotes.map((note, index) => (
               <NoteCard
                 key={note._id}
@@ -168,18 +168,21 @@ function Home() {
       )}
 
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#2B85FF] hover:bg-blue-600 absolute right-10 bottom-10"
+        className="group w-16 h-16 flex items-center justify-center rounded-2xl absolute right-10 bottom-10 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 active:scale-95"
         onClick={() => {
           setOpenAddEditModal({ isShown: true, type: "add", data: null });
         }}
+        title="Add new note"
       >
-        <MdAdd className="text-[32px] text-white" />
+        <MdAdd className="text-[32px] text-white group-hover:scale-110 transition-transform duration-200" />
       </button>
 
       <Modal
         isOpen={openAddEditModal.isShown}
         onRequestClose={() => {}}
-        style={{ overlay: { backgroundColor: "rgba(0, 0, 0, 0.4)" } }}
+        style={{
+          overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 9999 },
+        }}
         contentLabel=""
         className="absolute top-1/2 left-1/2 w-[40%] max-h-3/4 bg-white rounded-md p-5 overflow-y-auto -translate-x-1/2 -translate-y-1/2 shadow-lg"
       >

@@ -16,7 +16,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://note-app-frontend-3ato.onrender.com",
+    origin: [
+      "https://note-app-frontend-3ato.onrender.com",
+      "http://localhost:5173",
+    ],
     credentials: true,
   })
 );
