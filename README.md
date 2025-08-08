@@ -19,6 +19,12 @@ A minimalistic, fullstack note-taking web app built with the MERN stack. Users c
 - Tag support (stored as array)
 - Fully responsive & minimalistic UI
 
+## Screenshots
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/ffa2472c-8e35-4f1c-baf3-db954e3b9faf" />
+
+<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/93ca4d04-9380-41f4-b29a-d0ed80d0aa2d" />
+
+
 ## 📁 Folder Structure
 
 ```bash
