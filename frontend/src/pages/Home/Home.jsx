@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import NoteCard from "../../components/Cards/NoteCard";
 import { MdAdd } from "react-icons/md";
@@ -10,23 +10,48 @@ import Toast from "../../components/ToastMessage/Toast";
 import EmptyCard from "../../components/Cards/EmptyCard";
 import NoNotes from "../../assets/NoNotes.png";
 import NoSearch from "../../assets/NoSearch.png";
+import LoadingSpinner from "../../components/Loading Spinner/LoadingSpinner";
 
 function Home() {
-  const [openAddEditModal, setOpenAddEditModal] = React.useState({
+  const [openAddEditModal, setOpenAddEditModal] = useState({
     isShown: false,
     type: "add",
     data: null,
   });
 
-  const [showToastMsg, setShowToastMsg] = React.useState({
+  const [showToastMsg, setShowToastMsg] = useState({
     isShown: false,
     msg: "",
     type: "add",
   });
-  const [userInfo, setUserInfo] = React.useState({});
-  const [allNotes, setAllNotes] = React.useState([]);
-  const [isSearch, setIsSearch] = React.useState(false);
+  const [userInfo, setUserInfo] = useState({});
+  const [allNotes, setAllNotes] = useState([]);
+  const [isSearch, setIsSearch] = useState(false);
+  const [isBackendReady, setIsBackendReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkBackendStatus = async () => {
+      while (!isBackendReady) {
+        try {
+          const response = await axiosInstance.get("/api/health");
+          if (response.data && response.data.status === "OK") {
+            setIsBackendReady(true);
+            setIsLoading(false);
+            break; // Exit the loop when backend is ready
+          }
+        } catch (error) {
+          console.log("Backend not ready yet, retrying...", error.message);
+        }
+
+        // Wait 2 seconds before next attempt
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
+    };
+
+    checkBackendStatus();
+  }, []);
 
   // Get User Info
   const getUserInfo = async () => {
@@ -122,6 +147,14 @@ function Home() {
     getUserInfo();
     getAllNotes();
   }, []);
+
+  if (isLoading && !isBackendReady) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <>

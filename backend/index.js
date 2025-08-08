@@ -28,7 +28,10 @@ app.listen(process.env.PORT || 7000, () =>
   console.log("Server is running on port 7000")
 );
 
-app.get("/", (req, res) => res.json({ data: "hello World" }));
+// Health Check Endpoint
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is ready" });
+});
 
 // create account
 app.post("/create-account", async (req, res) => {
