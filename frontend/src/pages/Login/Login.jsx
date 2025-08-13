@@ -46,7 +46,7 @@ function Login() {
   };
 
   const handleDemoLogin = async () => {
-    setEmail("john@gmail.com");
+    setEmail("John@gmail.com");
     setPassword("123456");
     Login();
   };
@@ -99,7 +99,7 @@ function Login() {
               Initial spin-up may take up to 15 seconds.
             </p>
             <p>
-              💡 <strong>Demo Login:</strong> Email: <code>john@gmail.com</code>{" "}
+              💡 <strong>Demo Login:</strong> Email: <code>John@gmail.com</code>{" "}
               | Password: <code>123456</code>
             </p>
             <button
