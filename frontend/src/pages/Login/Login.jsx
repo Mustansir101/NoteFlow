@@ -96,11 +96,11 @@ function Login() {
           <div className="bg-yellow-50 mt-2 border-l-4 max-w-96 border-yellow-400 p-3 mb-4 text-sm text-gray-800 rounded">
             <p className="mb-1">
               ⚠️ <strong>Note:</strong> The backend is hosted on a free service.
-              Initial spin-up may take up to 15 seconds.
+              Initial spin-up may take up to 45 seconds. Till then Logging in might show unexpected error.
             </p>
             <p>
-              💡 <strong>Demo Login:</strong> Email: <code>John@gmail.com</code>{" "}
-              | Password: <code>123456</code>
+              💡 <strong>Demo Login:</strong> Email: John@gmail.com {" "}
+              | Password: 123456
             </p>
             <button
               onClick={() => handleDemoLogin()}
