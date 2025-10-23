@@ -33,13 +33,13 @@ function Navbar({
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo Section */}
         <div className="flex items-center group">
-          <div className="relative flex items-center justify-center w-10 h-10 mr-3 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-600 rounded-xl shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-300">
-            <BookOpen className="h-5 w-5 text-white group-hover:scale-110 transition-transform duration-200" />
+          <div className="relative flex items-center justify-center w-10 h-10 mr-3 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-xl shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-300">
+            <BookOpen className="h-5 w-5 text-white" />
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-purple-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
           <button
-            onClick={() => navigate("/dashboard")}
-            className="text-xl font-semibold text-slate-800 hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 relative"
+            onClick={() => navigate("/")}
+            className="text-xl font-semibold text-slate-800 hover:text-blue-600 transition-colors duration-200 outline-none rounded-lg px-2 py-1 relative"
           >
             NoteFlow
             <span className="absolute -bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>

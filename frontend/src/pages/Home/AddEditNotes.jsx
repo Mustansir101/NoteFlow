@@ -58,61 +58,128 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
   };
 
   return (
-    <div className="relative">
-      <button
-        className="w-10 h-10 flex items-center justify-center absolute rounded-full -top-3 -right-3 cursor-pointer hover:bg-gray-100 transition-colors duration-200"
-        onClick={onClose}
-      >
-        <MdClose className="text-2xl text-gray-600" />
-      </button>
-
-      <div className="flex flex-col gap-2">
-        <label className="input-label text-gray-700 font-medium">Title</label>
-        <input
-          type="text"
-          className="text-2xl text-gray-900 outline-none border-b-2 border-gray-200 focus:border-blue-500 transition-colors duration-200 pb-1"
-          placeholder="Go to Gym at 5am"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          readOnly={type === "view"}
-        />
+    <div className="relative outline-none">
+      {/* Modal Header */}
+      <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            {type === "view"
+              ? "View Note"
+              : type === "edit"
+              ? "Edit Note"
+              : "Add New Note"}
+          </h2>
+          <p className="text-sm text-gray-500 mt-1">
+            {type === "view"
+              ? "Reading mode - click edit to make changes"
+              : type === "edit"
+              ? "Make your changes and click update"
+              : "Create a new note to capture your thoughts"}
+          </p>
+        </div>
+        <button
+          className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          onClick={onClose}
+          title="Close modal"
+        >
+          <MdClose className="text-xl" />
+        </button>
       </div>
 
-      <div className="flex flex-col gap-2 mt-4">
-        <label className="input-label text-gray-700 font-medium">Content</label>
-        <textarea
-          type="text"
-          className={`text-sm text-gray-800 outline-none bg-gray-50 border border-gray-200 p-2 rounded-lg overflow-hidden h-40 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-            type === "view"
-              ? "resize-none text-[15px]"
-              : "hover:border-gray-300"
-          }`}
-          placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-          rows={10}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          readOnly={type === "view"}
-        />
+      {/* Form Content */}
+      <div className="space-y-6">
+        {/* Title Input */}
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-gray-700">
+            Title <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            className={`w-full text-xl font-medium text-gray-900 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none transition-all duration-200 ${
+              type === "view"
+                ? "cursor-default"
+                : "focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100 hover:border-gray-300"
+            }`}
+            placeholder="Enter note title..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            readOnly={type === "view"}
+          />
+        </div>
+
+        {/* Content Textarea */}
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-gray-700">
+            Content <span className="text-red-500">*</span>
+          </label>
+          <textarea
+            className={`w-full min-h-[200px] text-gray-800 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none transition-all duration-200 resize-none ${
+              type === "view"
+                ? "cursor-default"
+                : "focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100 hover:border-gray-300"
+            }`}
+            placeholder="Write your note content here..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            readOnly={type === "view"}
+            rows={8}
+          />
+        </div>
+
+        {/* Tags Input */}
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-gray-700">
+            Tags
+            <span className="text-xs font-normal text-gray-500 ml-2">
+              (Press Enter to add tags)
+            </span>
+          </label>
+          <TagInput
+            tags={tags}
+            setTags={setTags}
+            isViewMode={type === "view"}
+          />
+        </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="rounded-lg bg-red-50 border border-red-200 p-4">
+            <div className="flex items-center">
+              <div className="w-4 h-4 rounded-full bg-red-400 mr-3"></div>
+              <p className="text-red-700 text-sm font-medium">{error}</p>
+            </div>
+          </div>
+        )}
       </div>
 
-      <div>
-        <label className="input-label text-gray-700 font-medium">Tags</label>
-        <TagInput tags={tags} setTags={setTags} isViewMode={type === "view"} />
-      </div>
-
-      {error && (
-        <p className="text-red-600 text-sm pt-4 bg-red-50 p-2 rounded border border-red-200">
-          {error}
-        </p>
+      {/* Modal Footer */}
+      {type !== "view" && (
+        <div className="flex items-center justify-end gap-3 mt-8 pt-6 border-t border-gray-100">
+          <button
+            onClick={onClose}
+            className="px-6 py-3 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          >
+            Cancel
+          </button>
+          <button
+            className="px-6 py-3 bg-gradient-to-r from-[#2B85FF] to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-200 transform hover:scale-105 active:scale-95"
+            onClick={handleAddNote}
+          >
+            {type === "edit" ? "Update Note" : "Create Note"}
+          </button>
+        </div>
       )}
 
-      {type !== "view" && (
-        <button
-          className="btn-primary font-medium mt-5 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 shadow-sm"
-          onClick={handleAddNote}
-        >
-          {type === "edit" ? "UPDATE" : "ADD"}
-        </button>
+      {/* View Mode Footer */}
+      {type === "view" && (
+        <div className="flex items-center justify-center mt-8 pt-6 border-t border-gray-100">
+          <button
+            onClick={onClose}
+            className="px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          >
+            Close
+          </button>
+        </div>
       )}
     </div>
   );
