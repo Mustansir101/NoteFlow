@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   MdOutlineSpeed,
@@ -12,6 +12,24 @@ import Footer from "../../components/Footer/Footer";
 
 function Landing() {
   const navigate = useNavigate();
+  const [isBackendReady, setIsBackendReady] = useState(false);
+  useEffect(() => {
+    const checkBackendStatus = async () => {
+      while (!isBackendReady) {
+        try {
+          const response = await axiosInstance.get("/api/health");
+          if (response.data && response.data.status === "OK") {
+            setIsBackendReady(true);
+            break;
+          }
+        } catch (error) {
+          console.log("Backend not ready yet, retrying...", error.message);
+        }
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
+    };
+    checkBackendStatus();
+  }, []);
 
   const features = [
     {
