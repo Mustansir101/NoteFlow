@@ -19,7 +19,7 @@ function SearchBar({ value, onChange, handleSearch, onClearSearch, userInfo }) {
       <input
         type="text"
         placeholder="Search notes by title, content, or tags..."
-        className="w-full text-sm bg-transparent outline-none placeholder-slate-500 text-slate-700"
+        className="w-full text-sm bg-transparent outline-none placeholder-slate-500 text-slate-700 h-full"
         value={value}
         onChange={onChange}
       />

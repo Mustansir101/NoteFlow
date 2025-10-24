@@ -59,14 +59,17 @@ function Login() {
       {/* Main Content */}
       <div className="flex-1 flex">
         {/* Left Side - Login Form */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center mb-30 px-4 sm:px-6 lg:px-8 py-12">
-          <div className="max-w-md w-full mt-10 space-y-8">
+        <div className="w-full lg:w-1/2 flex items-center justify-center mb-30 px-4 sm:px-6 lg:px-8 py-5">
+          <div className="max-w-md w-full mt-10 space-y-2">
             {/* Header */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
               <p className="mt-2 text-gray-600">
                 Sign in to your account to continue your note-taking journey.
-                <span className="text-blue-600 font-bold"> Try Demo Account</span>
+                <span className="text-blue-600 font-bold">
+                  {" "}
+                  Try Demo Account
+                </span>
               </p>
             </div>
 
@@ -106,9 +109,11 @@ function Login() {
                 {error && (
                   <div className="rounded-lg bg-red-50 border border-red-200 p-4">
                     <div className="flex items-center">
-                      <div className="w-4 h-4 rounded-full bg-red-400 mr-3"></div>
-                      <p className="text-red-700 text-sm font-medium">
-                        {error}
+                      <div className="flex-shrink-0 w-4 h-4 rounded-full bg-red-400 mr-3"></div>
+                      <p className="text-red-700 text-sm font-medium leading-snug">
+                        {error === "An unexpected error occurred."
+                          ? "Server not active, please wait for a few seconds and try again."
+                          : error}
                       </p>
                     </div>
                   </div>
@@ -127,7 +132,7 @@ function Login() {
                   Login as Demo User
                 </button>
 
-                <div className="text-center">
+                <div className="text-left">
                   <p className="text-sm text-gray-600">
                     Don't have an account?{" "}
                     <Link
@@ -136,6 +141,10 @@ function Login() {
                     >
                       Create one here
                     </Link>
+                  </p>
+                  <p className="text-sm font-semibold text-gray-600">
+                    Note: Server takes 50-60 seconds to get active, as hosted on
+                    a free service
                   </p>
                 </div>
               </form>
@@ -146,7 +155,7 @@ function Login() {
         {/* Right Side - Hero Section */}
         <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
           {/* Content */}
-          <div className="relative z-10 flex flex-col justify-center items-center text-center px-12 py-16">
+          <div className="relative z-10 flex flex-col justify-center items-center text-center px-12 mt-5">
             <div className="max-w-lg">
               <h1 className="text-4xl font-bold text-gray-900 mb-6">
                 Your ideas deserve a

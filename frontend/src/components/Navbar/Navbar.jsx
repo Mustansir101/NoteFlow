@@ -29,8 +29,8 @@ function Navbar({
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/85 backdrop-blur-lg border-b border-slate-200/60 shadow-lg">
-      <div className="flex items-center justify-between px-6 py-4">
+    <nav className="sticky top-0 z-50 bg-white/85 backdrop-blur-lg border-b border-slate-200/60 shadow-lg px-32">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Logo Section */}
         <div className="flex items-center group">
           <div className="relative flex items-center justify-center w-10 h-10 mr-3 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-xl shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-300">

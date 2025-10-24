@@ -52,7 +52,7 @@ function SignUp() {
       <div className="flex-1 flex">
         {/* Left Side - SignUp Form */}
         <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
-          <div className="max-w-md w-full space-y-8">
+          <div className="max-w-md w-full space-y-3">
             {/* Header */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -66,7 +66,7 @@ function SignUp() {
 
             {/* SignUp Form */}
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
                     htmlFor="name"
@@ -117,9 +117,11 @@ function SignUp() {
                 {error && (
                   <div className="rounded-lg bg-red-50 border border-red-200 p-4">
                     <div className="flex items-center">
-                      <div className="w-4 h-4 rounded-full bg-red-400 mr-3"></div>
-                      <p className="text-red-700 text-sm font-medium">
-                        {error}
+                      <div className="flex-shrink-0 w-4 h-4 rounded-full bg-red-400 mr-3"></div>
+                      <p className="text-red-700 text-sm font-medium leading-snug">
+                        {error === "An unexpected error occurred."
+                          ? "Server not active, please wait for a few seconds and try again."
+                          : error}
                       </p>
                     </div>
                   </div>
@@ -139,7 +141,7 @@ function SignUp() {
                       to="/login"
                       className="font-semibold text-[#2B85FF] hover:text-blue-600 transition-colors duration-200"
                     >
-                      Sign in here
+                      Log in here
                     </Link>
                   </p>
                 </div>

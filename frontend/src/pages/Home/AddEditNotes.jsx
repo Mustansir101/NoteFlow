@@ -95,10 +95,10 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
           </label>
           <input
             type="text"
-            className={`w-full text-xl font-medium text-gray-900 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none transition-all duration-200 ${
+            className={`w-full text-xl font-medium text-gray-900 bg-gray-50 rounded-lg px-4 py-3 outline-none transition-all duration-200 ${
               type === "view"
                 ? "cursor-default"
-                : "focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100 hover:border-gray-300"
+                : "border border-blue-400/60 focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100"
             }`}
             placeholder="Enter note title..."
             value={title}
@@ -113,10 +113,10 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
             Content <span className="text-red-500">*</span>
           </label>
           <textarea
-            className={`w-full min-h-[200px] text-gray-800 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none transition-all duration-200 resize-none ${
+            className={`w-full text-gray-800 bg-gray-50 rounded-lg px-4 py-3 outline-none transition-all duration-200 resize-none ${
               type === "view"
                 ? "cursor-default"
-                : "focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100 hover:border-gray-300"
+                : "border border-blue-400/60 focus:bg-white focus:border-[#2B85FF] focus:ring-2 focus:ring-blue-100"
             }`}
             placeholder="Write your note content here..."
             value={content}
@@ -166,18 +166,6 @@ function AddEditNotes({ noteData, type, onClose, getAllNotes, showToast }) {
             onClick={handleAddNote}
           >
             {type === "edit" ? "Update Note" : "Create Note"}
-          </button>
-        </div>
-      )}
-
-      {/* View Mode Footer */}
-      {type === "view" && (
-        <div className="flex items-center justify-center mt-8 pt-6 border-t border-gray-100">
-          <button
-            onClick={onClose}
-            className="px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          >
-            Close
           </button>
         </div>
       )}

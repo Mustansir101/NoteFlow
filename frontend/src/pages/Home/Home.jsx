@@ -163,7 +163,7 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fdfeff]">
+    <div className="min-h-screen bg-[#fdfeff] mb-10">
       <Navbar
         userInfo={userInfo}
         onSearch={handleSearch}
